@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>슬라이드</title>
+    <link rel="stylesheet" href="./asstes/reset.css">
+    <link rel="stylesheet" href="./asstes/style.css">
+</head>
+
+<body>
+    <div class="slide_wrap">
+        <ul class="slide_box">
+            <li class="slide01">1</li>
+            <li class="slide02">2</li>
+            <li class="slide03">3</li>
+            <li class="slide04">4</li>
+            <li class="slide05">5</li>
+            <li class="slide06">6</li>
+        </ul>
+        <p class="controller">
+            <span class="prev">&lang;</span>
+            <span class="next">&rang;</span>
+        </p>
+    </div>
+
+    <script>
+        let SlideNum = 0;
+        const slides = document.querySelector('.slide_box');
+        const slide = document.querySelectorAll('.slide_box li');
+        const slideCount = slide.length;
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        const slideWidth = 500; // 슬라이드 가로 넓이
+
+        slides.style.width = (slideWidth) * slideCount + 'px';
+
+        function moveSlide(num) {
+            slides.style.left = -num * 500 + 'px';
+            SlideNum = num;
+        }
+
+        prevBtn.addEventListener('click', function () {
+            if (SlideNum !== 0) {
+                moveSlide(SlideNum - 1);
+            }
+        });
+
+        nextBtn.addEventListener('click', function () {
+            if (SlideNum !== slideCount - 1) {
+                moveSlide(SlideNum + 1);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
