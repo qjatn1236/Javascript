@@ -1,16 +1,24 @@
-const h1 = document.querySelector(".hello h1")
+const words = [
+	'spray',
+	'limit',
+	'elite',
+	'exuberant',
+	'destruction',
+	'present',
+];
 
-function handleTitleClick() {
-	const currentColor = h1.style.color
+// newWords = words.filter((element) => element.length > 6);
+function myfilter(origin, callback) {
+	var result = [];
 
-	let newColor
-
-	if (currentColor === "tomato") {
-		newColor = "blue"
-	} else {
-		newColor = "tomato"
+	for (var i = 0; i < origin.length; i++) {
+		var current = origin[i];
+		if (callback(current)) {
+			result.push(current);
+		}
 	}
-	h1.style.color = newColor
+	return result;
 }
 
-h1.addEventListener("click", handleTitleClick)
+newWords = myfilter(words, (element) => element.length > 6);
+console.log(newWords);
